@@ -16,6 +16,7 @@ from decouple import config
 import logging
 from telethon.sessions import StringSession
 import easygui
+import re
 from classes import Sinal
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
@@ -51,9 +52,12 @@ async def sender_bH(event):
         except Exception as e:
             print(e)
     texto_mensagem = event.message.text
-    # print(texto_mensagem)
-    sinal1 = Sinal(texto_mensagem)
-    sinal1.print_atributos()
+    print(texto_mensagem)
+    if 'ENTRADA CONFIRMADA' in texto_mensagem:
+        teste, teste2 = re.findall(r'(\d)', texto_mensagem.splitlines()[5])
+        print(teste, teste2)
+    # sinal1 = Sinal(texto_mensagem)
+    # sinal1.print_atributos()
 
 @BotzHubUser.on(events.MessageEdited(incoming=True, chats=FROM))
 async def sender_bH(event):
@@ -65,12 +69,12 @@ async def sender_bH(event):
             )
         except Exception as e:
             print(e)
-    print(event.message.text)
-    if '✖✖✖✖✖✖✖✖✖✖' in event.message.text:
-        easygui.msgbox('Loss identificado')
-        print('Deu ruim')
-    if 'GREEN NO' in event.message.text:
-        print('deu bom')
+    # print(event.message.text)
+    # if '✖✖✖✖✖✖✖✖✖✖' in event.message.text:
+    #     easygui.msgbox('Loss identificado')
+    #     print('Deu ruim')
+    # if 'GREEN NO' in event.message.text:
+    #     print('deu bom')
 
 print("Bot has started.")
 BotzHubUser.run_until_disconnected()
