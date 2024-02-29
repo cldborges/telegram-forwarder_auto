@@ -15,9 +15,14 @@ from telethon import TelegramClient, events
 from decouple import config
 import logging
 from telethon.sessions import StringSession
-import easygui
+# import easygui
 import re
 from classes import Sinal
+
+# from selenium import webdriver
+import time
+from funcoes import *
+from variaveis import *
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
@@ -40,6 +45,9 @@ except Exception as ap:
     print(f"ERROR - {ap}")
     exit(1)
 
+driver = login('roleta-ao-vivo')
+apostas_filtradas = []
+ficha = 1
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
@@ -54,8 +62,10 @@ async def sender_bH(event):
     texto_mensagem = event.message.text
     print(texto_mensagem)
     if 'ENTRADA CONFIRMADA' in texto_mensagem:
-        teste, teste2 = re.findall(r'(\d)', texto_mensagem.splitlines()[5])
-        print(teste, teste2)
+        coluna1, coluna2 = re.findall(r'(\d)', texto_mensagem.splitlines()[5])
+        print(coluna1, coluna2)
+        apostas_filtradas.append({'ficha': 1, 'aposta': ['0']})
+        apostar2(driver, apostas_filtradas)
     # sinal1 = Sinal(texto_mensagem)
     # sinal1.print_atributos()
 

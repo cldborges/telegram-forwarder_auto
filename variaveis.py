@@ -1,0 +1,21 @@
+categorias = (
+    # {'nome':'linha de cima (3, 6, 9, 12, ...)', 'atributo': ('top2to1', ''), 'grupo': 'linhas', 'numeros': list(set(range(3, 36 + 1, 3)))},
+    # {'nome':'linha do meio (2, 5, 8, 11, ...)', 'atributo': ('middle2to1', ''), 'grupo': 'linhas', 'numeros': list(set(range(2, 36 + 1, 3)))},
+    # # {'nome':'linha de baixo (1, 4, 7, 10, ...)', 'atributo': ('bottom2to1', ''), 'grupo': 'linhas', 'numeros': list(set(range(1, 36 + 1, 3)))}, 
+    {'nome':'linhas cima e meio', 'atributo': ('top2to1', 'middle2to1'), 'contrario': ('bottom2to1', ''), 'grupo': 'linhas 2to1', 'numeros': list(set(list(range(3, 36 + 1, 3)) + list(range(2, 36 + 1, 3))))},
+    {'nome':'linhas cima e baixo', 'atributo': ('top2to1', 'bottom2to1'), 'contrario': ('middle2to1', ''), 'grupo': 'linhas 2to1', 'numeros': list(set(list(range(3, 36 + 1, 3)) + list(range(1, 36 + 1, 3))))},
+    {'nome':'linhas meio e baixo', 'atributo': ('middle2to1', 'bottom2to1'), 'contrario': ('top2to1', ''), 'grupo': 'linhas 2to1', 'numeros': list(set(list(range(2, 36 + 1, 3)) + list(range(1, 36 + 1, 3))))},
+    # {'nome':'1a dúzia', 'atributo': ('1st12', ''), 'grupo': 'duzias', 'numeros': list(set(range(1, 12 + 1)))}, 
+    # {'nome':'2a dúzia', 'atributo': ('2nd12', ''), 'grupo': 'duzias', 'numeros': list(set(range(13, 24 + 1)))},
+    # {'nome':'3a dúzia', 'atributo': ('3rd12', ''), 'grupo': 'duzias', 'numeros': list(set(range(25, 36 + 1)))},
+    {'nome':'zero', 'atributo': ('0', ''), 'grupo': 'zero', 'numeros': [0]}, 
+    {'nome':'1a e 2a dúzias', 'atributo': ('1st12', '2nd12'), 'contrario': ('3rd12', ''), 'grupo': 'duzias 2to1', 'numeros': list(set(range(1, 24 + 1)))},
+    {'nome':'1a e 3a dúzias', 'atributo': ('1st12', '3rd12'), 'contrario': ('2nd12', ''), 'grupo': 'duzias 2to1', 'numeros': list(set(list(range(1, 12 + 1)) + list(range(25, 36 + 1))))},
+    {'nome':'2a e 3a dúzias', 'atributo': ('2nd12', '3rd12'), 'contrario': ('1st12', ''), 'grupo': 'duzias 2to1', 'numeros': list(set(range(13, 36 + 1)))},
+    # {'nome':'1a metade', 'atributo': ('from1to18', ''), 'grupo': 'metades', 'numeros': list(set(range(1, 18 + 1)))},
+    # {'nome':'2a metade', 'atributo': ('from19to36', ''), 'grupo': 'metades', 'numeros': list(set(range(19, 36 + 1)))},
+    # {'nome':'pretos', 'atributo': ('black', ''), 'grupo': 'cores', 'numeros': [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35]},
+    # {'nome':'vermelhos', 'atributo': ('red', ''), 'grupo': 'cores', 'numeros': [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36]},
+    # {'nome':'even (par)', 'atributo': ('even', ''), 'grupo': 'multiplos', 'numeros': list(set(range(2, 36 + 1, 2)))},
+    # {'nome':'odd (ímpar)', 'atributo': ('odd', ''), 'grupo': 'multiplos', 'numeros': list(set(range(1, 36 + 1, 2)))}
+)
