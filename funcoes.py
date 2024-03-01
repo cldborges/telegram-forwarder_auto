@@ -110,7 +110,7 @@ def apostar2(driver, apostas, estado={"ficha_anterior": None}):
             ficha = aposta['ficha']
             if ficha != estado["ficha_anterior"]:
                 numero_aleatorio = random.uniform(0.3, 0.6)
-                print(numero_aleatorio)
+                # print(numero_aleatorio)
                 time.sleep(numero_aleatorio)
 
                 # escolher com o teclado numérico de cima
@@ -150,7 +150,7 @@ def apostar2(driver, apostas, estado={"ficha_anterior": None}):
                     forma = 'rect'
                 element = driver.find_element(By.CSS_SELECTOR, f'{forma}[data-bet-spot-id="{categoria}"]')
                 element.click()
-        print(ficha, aposta)
+        # print(ficha, aposta)
 
 
 # def apostar2(driver, apostas, estado={"ficha_anterior": None}):

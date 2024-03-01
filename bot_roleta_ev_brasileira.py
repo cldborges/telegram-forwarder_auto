@@ -17,12 +17,12 @@ import logging
 from telethon.sessions import StringSession
 # import easygui
 import re
-from classes import Sinal
+# from classes import Sinal
 
 # from selenium import webdriver
-import time
+# import time
 from funcoes import *
-from variaveis import *
+# from variaveis import *
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
@@ -47,7 +47,8 @@ except Exception as ap:
 
 driver = login('roleta-ao-vivo')
 apostas_filtradas = []
-ficha = 1
+ficha_zero = 1
+ficha = 2.5
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
@@ -62,9 +63,19 @@ async def sender_bH(event):
     texto_mensagem = event.message.text
     print(texto_mensagem)
     if 'ENTRADA CONFIRMADA' in texto_mensagem:
+        apostas_filtradas = []
         coluna1, coluna2 = re.findall(r'(\d)', texto_mensagem.splitlines()[5])
+        for coluna in coluna1, coluna2:
+            if coluna == '1':
+                coluna_tag = 'bottom2to1'
+            elif coluna == '2':
+                coluna_tag = 'middle2to1'
+            elif coluna == '3':
+                coluna_tag = 'top2to1'
+            apostas_filtradas.append({'ficha': ficha, 'aposta': [coluna_tag]})
         print(coluna1, coluna2)
-        apostas_filtradas.append({'ficha': 1, 'aposta': ['0']})
+        apostas_filtradas.append({'ficha': ficha_zero, 'aposta': ['0']})
+        print(apostas_filtradas)
         apostar2(driver, apostas_filtradas)
     # sinal1 = Sinal(texto_mensagem)
     # sinal1.print_atributos()
