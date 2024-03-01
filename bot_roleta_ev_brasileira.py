@@ -47,8 +47,10 @@ except Exception as ap:
 
 driver = login('roleta-ao-vivo')
 apostas_filtradas = []
+ultimos_5_numeros_anterior = []
 ficha_zero = 1
 ficha = 2.5
+gales = 1
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
@@ -75,8 +77,20 @@ async def sender_bH(event):
             apostas_filtradas.append({'ficha': ficha, 'aposta': [coluna_tag]})
         print(coluna1, coluna2)
         apostas_filtradas.append({'ficha': ficha_zero, 'aposta': ['0']})
-        print(apostas_filtradas)
+        # print(apostas_filtradas)
         apostar2(driver, apostas_filtradas)
+        numeros = extrair_resultados(driver)
+        ultimos_5_numeros = numeros[0:5]
+        ultimos_5_numeros_anterior = ultimos_5_numeros.copy()
+        while ultimos_5_numeros_anterior == ultimos_5_numeros or ultimos_5_numeros_anterior == []:
+            ultimos_5_numeros_anterior = ultimos_5_numeros.copy()
+            numeros = extrair_resultados(driver)
+            ultimos_5_numeros = numeros[0:5]
+            print('Aguardando resultado...')
+            time.sleep(1)
+        # ultimo_numero = numeros[0]
+        # print(ultimo_numero)
+        
     # sinal1 = Sinal(texto_mensagem)
     # sinal1.print_atributos()
 
